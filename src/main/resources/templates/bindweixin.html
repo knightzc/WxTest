@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>账号绑定</title>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css}"/>-->
+    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css}"/>
+    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css}"/>
+</head>
+<body>
+<div class="weui-cells__title">账号绑定</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
+        <div class="weui-cell__bd">
+            <input id="account" class="weui-input" type="text"  placeholder="请输入账号"/>
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">密码</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input id="password" class="weui-input" type="password" placeholder="请输入密码"/>
+        </div>
+    </div>
+</div>
+<div class="weui-btn-area">
+    <button class="weui-btn weui-btn_primary" onclick="bindAccount()" id="showTooltips">确定</button>
+</div>
+
+
+
+<th:block>
+    <!--<script type="text/javascript" th:src="@{http://res.wx.qq.com/open/js/jweixin-1.4.0.js}"></script>-->
+    <!--<script type="text/javascript" th:src="@{https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js}"></script>-->
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery-weui/1.2.1/js/swiper.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery-weui/1.2.1/js/city-picker.min.js}"></script>
+    <!--<script type="text/javascript" th:src="@{https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js}"></script>-->
+    <script type="text/javascript" th:src="@{/bindweixin/bindweixin.js}"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var openId = /*[[${openId}]]*/'';
+        var bindweixinUrl = /*[[@{/bindweixin}]]*/'';
+        var unBindUrl = /*[[@{/unBind}]]*/'';
+        /*]]>*/
+    </script>
+</th:block>
+
+</body>
+</html>

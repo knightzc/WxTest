@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: development
+---
+#开发环境
+spring:
+  profiles: development
+  datasource:
+    url: jdbc:mysql://localhost:3306/weixin_test?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: root
+    initialize: false
+    data: classpath*:db/data.sql
+  thymeleaf:
+      cache: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  devtools:
+    livereload:
+      enabled: true
+logging:
+  level:
+    com.example.demo.service.FeignClientService: DEBUG
+server:
+  port: 80
+  context-path: /weixin
+appconfig:
+    appid: wxcb7fd1d852431594
+    secret: d0cc445b97792467f41217acd6d209d9
+    appno: gh_126ae799cf96
+#    appid: wx092a7391d7ced6c0
+#    secret: f9ce33f316a1ffd221ff515d7d6008aa
+
