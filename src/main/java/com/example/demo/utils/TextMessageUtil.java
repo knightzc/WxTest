@@ -23,7 +23,7 @@ public class TextMessageUtil {
         MessageText text = new MessageText();
         text.setToUserName(FromUserName);
         text.setFromUserName(ToUserName);
-        text.setContent("欢迎关注机械振动工程党支部");
+        text.setContent("<a href='https://www.baidu.com'>点击打开百度</a>");
         text.setCreateTime(new Date().getTime());
         text.setMsgType("text");
         return  messageToxml(text);

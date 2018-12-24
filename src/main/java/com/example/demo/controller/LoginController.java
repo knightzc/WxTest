@@ -3,12 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.service.WxOpenIdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -35,6 +33,15 @@ public class LoginController {
     @ResponseBody
     public Map<String,Object> bindAccount(String openId,String userAccount,String password){
         return wxOpenIdService.bindAccount(openId, userAccount, password);
+    }
+
+    @PostMapping(value = "/test",headers = "Content-Type=application/json",consumes="application/json",produces="application/json")
+    @ResponseBody
+    public Map<String,String> bindAccount(@RequestBody Student student){
+        Map<String,String> map = new HashMap<>();
+        map.put("name",student.getName());
+        map.put("no",student.getNo());
+        return map;
     }
 
 

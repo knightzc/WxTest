@@ -1,10 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.FeignConfiguration;
-import com.example.demo.bean.AccessTokenInfo;
-import com.example.demo.bean.ButtonInfo;
-import com.example.demo.bean.TempleteInfo;
-import com.example.demo.bean.TempleteMsgResponse;
+import com.example.demo.bean.*;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +17,7 @@ public interface FeignClientService {
 
     @RequestMapping(value = "/cgi-bin/message/template/send",method = RequestMethod.POST)
     TempleteMsgResponse sendTempleteMsg(@RequestParam("access_token") String access_token,
-                                        @RequestBody TempleteInfo templeteInfo);
+                                        @RequestBody CourseTemplete courseTemplete);
 
     @RequestMapping(value = "/cgi-bin/menu/create",method = RequestMethod.POST,consumes = "application/json")
     TempleteMsgResponse createButton(@RequestParam("access_token") String access_token, @RequestBody ButtonInfo buttonInfo);

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.bean.AccessTokenInfo;
+import com.example.demo.bean.CourseTemplete;
 import com.example.demo.bean.TempleteInfo;
 import com.example.demo.domain.model.WxOpenId;
 import com.example.demo.repositories.WxOpenIdRepository;
@@ -37,18 +38,19 @@ public class ScheduledTask {
             List<WxOpenId> wxOpenIdList = wxOpenIdRepository.findAll();
             for (WxOpenId wxOpenId : wxOpenIdList){
                 if(wxOpenId.getBindStatus()){
-                    TempleteInfo templeteInfo = new TempleteInfo();
-                    templeteInfo.setTouser(wxOpenId.getOpenId());
-                    templeteInfo.setTemplate_id("trbyB_nu0BBlQGYlRuEYEwtm5aNaFgLgl121sOK965k");
-                    TempleteInfo.DataBean dataBean = new TempleteInfo.DataBean();
-                    dataBean.setCourse(new TempleteInfo.DataBean.CourseBean("大学英语"));
-                    dataBean.setCourseDate(new TempleteInfo.DataBean.CourseDateBean("2018-12-12"));
-                    dataBean.setStartTime(new TempleteInfo.DataBean.StartTimeBean("08:00"));
-                    dataBean.setEndTime(new TempleteInfo.DataBean.EndTimeBean("10:00"));
-                    dataBean.setRemark(new TempleteInfo.DataBean.RemarkBean("测试"));
-                    templeteInfo.setData(dataBean);
-                    templeteInfo.setUrl("http://www.baidu.com/");
-                    feignClientService.sendTempleteMsg(AccessTokenInfo.accessTokenForUse, templeteInfo);
+                    CourseTemplete courseTemplete = new CourseTemplete();
+                    courseTemplete.setTouser(wxOpenId.getOpenId());
+                    courseTemplete.setTemplate_id("LINwX_aCi7a47_Wom1Q-Cy7uI8_bH3vxyJnFXxQq91I");
+                    CourseTemplete.DataBean dataBean = new CourseTemplete.DataBean();
+                    dataBean.setTeacher(new CourseTemplete.DataBean.ValueBean("李洋"));
+                    dataBean.setClassRoom(new CourseTemplete.DataBean.ValueBean("A102"));
+                    dataBean.setCourseCount(new CourseTemplete.DataBean.ValueBean("1"));
+                    dataBean.setCourseInfo(new CourseTemplete.DataBean.ValueBean("大学英语"));
+                    dataBean.setCourseSection(new CourseTemplete.DataBean.ValueBean("1-2"));
+                    dataBean.setRemark(new CourseTemplete.DataBean.ValueBean(""));
+                    courseTemplete.setData(dataBean);
+                    courseTemplete.setUrl("http://www.baidu.com/");
+                    feignClientService.sendTempleteMsg(AccessTokenInfo.accessTokenForUse, courseTemplete);
                 }
             }
 
